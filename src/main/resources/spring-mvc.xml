@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  	xmlns:context="http://www.springframework.org/schema/context" 
+  	xmlns:p="http://www.springframework.org/schema/p"
+  	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+  	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+  		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+  		http://www.springframework.org/schema/context  
+  		http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+  		http://www.springframework.org/schema/mvc  
+  		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd"
+ >
+ 
+  <!-- 引入属性文件 -->
+  <context:property-placeholder location="classpath:config.properties" />
+  <!-- 注解扫描包 -->
+  <context:component-scan base-package="pku.yang.controller" />
+  <!-- 开启mvc注解 -->
+  <mvc:annotation-driven />
+  <bean name="uploadController" class="pku.yang.controller.UploadController">
+  	<property name="filePath" value="F:/upload/"/>
+  </bean>
+  
+  <!-- 静态资源映射 -->
+  <mvc:resources location="/resources/image/" mapping="/image/**"/> 
+  <mvc:resources location="/resources/css/" mapping="/css/**"/> 
+  <mvc:resources location="/resources/js/" mapping="/js/**"/>
+  <mvc:resources location="/resources/template/" mapping="/template/**"/>
+  <mvc:resources location="/resources/bootstrap/" mapping="/bootstrap/**"/>
+  <mvc:interceptors>
+    <bean class="pku.yang.system.SystemInterceptor" />  
+  </mvc:interceptors> 
+  
+  <!-- 处理静态资源 add by chenbin-->
+  <mvc:default-servlet-handler/>
+
+  <bean id="viewResolver"
+    class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="prefix" value="/jsp/"></property>
+    <property name="suffix" value=".jsp"></property>
+  </bean>
+</beans>
