@@ -29,7 +29,7 @@ import pku.yang.service.IABACService;
 public class ABACController {
 
     @ResponseBody
-    @RequestMapping(value = "/queryaccess", method = RequestMethod.GET)
+    @RequestMapping(value = "/queryaccess", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     public String queryAccess(ABACParams abacParams) {
         Map<String, String> paramsDisplay = getParamsDisplay1(abacParams);
         if (abacService.checkParams(paramsDisplay) == null) {
@@ -41,7 +41,7 @@ public class ABACController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/queryattrexpress", method = RequestMethod.POST)
+    @RequestMapping(value = "/queryattrexpress", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     public String queryAttrExpress(ABACParams abacParams) {
         Map<String, String> paramsDisplay = getParamsDisplay1(abacParams);
         if (abacService.checkParams(paramsDisplay) == null) {
@@ -54,7 +54,7 @@ public class ABACController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/querypolicy", method = RequestMethod.POST)
+    @RequestMapping(value = "/querypolicy", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     public String queryPolicy(ABACParams abacParams) {
         Map<String, String> paramsDisplay = getParamsDisplay1(abacParams);
         if (abacService.checkParams(paramsDisplay) == null) {
@@ -66,7 +66,7 @@ public class ABACController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/insertpolicy", method = RequestMethod.POST)
+    @RequestMapping(value = "/insertpolicy", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     public String insertPolicy(ABACParams abacParams) {
         Map<String, String> paramsDisplay1 = getParamsDisplay1(abacParams);
         if (abacService.checkParams(paramsDisplay1) == null) {
@@ -93,7 +93,7 @@ public class ABACController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/modifypolicy", method = RequestMethod.POST)
+    @RequestMapping(value = "/modifypolicy", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     public String modifyPolicy(ABACParams abacParams) {
         Map<String, String> paramsDisplay1 = getParamsDisplay1(abacParams);
         if (abacService.checkParams(paramsDisplay1) == null) {
@@ -116,7 +116,7 @@ public class ABACController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/deletepolicy")
+    @RequestMapping(value = "/deletepolicy", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     public String deletePolicy(ABACParams abacParams) {
         Map<String, String> paramsDisplay1 = new HashMap<>();
         paramsDisplay1.put("fileFolderId", abacParams.getFileFolderId());
@@ -133,7 +133,7 @@ public class ABACController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/conflictdetection")
+    @RequestMapping(value = "/conflictdetection", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     public String conflictdetection(ABACParams abacParams) {
         Map<String, String> paramsDisplay1 = getParamsDisplay1(abacParams);
         if (abacService.checkParams(paramsDisplay1) == null) {
