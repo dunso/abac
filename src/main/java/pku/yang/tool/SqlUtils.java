@@ -203,6 +203,15 @@ public class SqlUtils {
         return result.size() > 0 ? result.get(0) : null;
     }
 
+    public static Object getColumnNameByColumnDisplay(String tableName,String columnDisplay){
+        List<Object> result = new ArrayList<Object>();
+        List<Object> params = new ArrayList<Object>();
+        params.add(tableName);
+        params.add(columnDisplay);
+        result = query("SELECT column_name FROM column_config where table_name = ? and column_display = ? and is_valid = 1","column_config",params);
+        return result.size()>0 ? result.get(0):"";
+    }
+
     public static Object getColumnDisplayByColumnCode(String tableName, String columnCode) {
         List<Object> result = new ArrayList<Object>();
         List<Object> params = new ArrayList<Object>();

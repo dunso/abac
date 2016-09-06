@@ -42,16 +42,16 @@ public class AttrExpressToSql {
 		
 		kvPair[1] = kvPair[1].replace("'", "");
 		
-		Object columnName = SqlUtils.getColumnNameByColumnCode(tableName,kvPair[0]);
+		Object columnName = SqlUtils.getColumnNameByColumnDisplay(tableName,kvPair[0]);
 		
 		if(!"".equals(columnName)){
 			return  " (u."+ columnName + " " + relative +" '"+kvPair[1] +"')";
 		}else{
-			columnName = SqlUtils.getColumnNameByColumnCode(subTableName,kvPair[0]);
+			columnName = SqlUtils.getColumnNameByColumnDisplay(subTableName,kvPair[0]);
 		}if(!"".equals(columnName)){
 			return  " (t."+ columnName + " " + relative +" '"+kvPair[1] +"')";
 		}else{
-			String columnNameId = String.valueOf(SqlUtils.getColumnNameByColumnCode(tableName, "userID"));
+			String columnNameId = String.valueOf(SqlUtils.getColumnNameByColumnDisplay(tableName, "userId"));
 			return " (u."+columnNameId+" = '-1')";
 		}
 	}
@@ -115,8 +115,8 @@ public class AttrExpressToSql {
 						}
 				}
 			}
-			String columnName1 = String.valueOf(SqlUtils.getColumnNameByColumnCode(tableName, "userID"));
-			String columnName2 = String.valueOf(SqlUtils.getColumnNameByColumnCode(subTableName, "id"));
+			String columnName1 = String.valueOf(SqlUtils.getColumnNameByColumnDisplay(tableName, "userId"));
+			String columnName2 = String.valueOf(SqlUtils.getColumnNameByColumnDisplay(subTableName, "id"));
 			sqls.add(sql.append(" ) and u." + columnName1 + " = t." + columnName2));
 		}
 		return sqls;

@@ -1,7 +1,7 @@
 angular.module('acApp', ['msgbox'])
 .factory('ac', function($http,$rootScope) {
     //var server_url = "http://localhost:9090/";
-	var server_url = "http://139.129.61.112:8088/abac/";
+	var server_url = "http://120.27.50.173:8080/abac/";
     return {
       post: function(api, data, success, error){   
         var url = server_url+api;

@@ -19,7 +19,7 @@
   <!-- 开启mvc注解 -->
   <mvc:annotation-driven />
   <bean name="uploadController" class="pku.yang.controller.UploadController">
-  	<property name="filePath" value="F:/upload/"/>
+  	<property name="filePath" value="/upload/"/>
   </bean>
   
   <!-- 静态资源映射 -->
